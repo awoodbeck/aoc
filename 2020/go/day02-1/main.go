@@ -12,7 +12,7 @@ import (
 var re = regexp.MustCompile(`^([0-9]+)-([0-9]+)\s([a-z]):\s([a-z]+)$`)
 
 func main() {
-	data, err := input.Read(2)
+	data, err := input.ReadStrings(2)
 	if err != nil {
 		log.Fatal(err)
 	}

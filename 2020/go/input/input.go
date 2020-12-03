@@ -8,16 +8,30 @@ import (
 
 const dataPath = "../../data"
 
-func Read(day int) ([]string, error) {
+func ReadBytes(day int) ([][]byte, error) {
 	bs, err := ioutil.ReadFile(fmt.Sprintf("%s/%d.txt", dataPath, day))
 	if err != nil {
 		return nil, fmt.Errorf("reading file: %w", err)
 	}
 
-	var data []string
+	var data [][]byte
 
 	for _, b := range bytes.Split(bytes.TrimSpace(bs), []byte("\n")) {
-		data = append(data, string(bytes.TrimSpace(b)))
+		data = append(data, bytes.TrimSpace(b))
+	}
+
+	return data, nil
+}
+
+func ReadStrings(day int) ([]string, error) {
+	bs, err := ReadBytes(day)
+	if err != nil {
+		return nil, err
+	}
+
+	data := make([]string, 0, len(bs))
+	for _, b := range bs {
+		data = append(data, string(b))
 	}
 
 	return data, nil
