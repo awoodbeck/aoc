@@ -8,8 +8,12 @@ import (
 
 const dataPath = "../../data"
 
+func ReadAll(day int) ([]byte, error) {
+	return ioutil.ReadFile(fmt.Sprintf("%s/%d.txt", dataPath, day))
+}
+
 func ReadBytes(day int) ([][]byte, error) {
-	bs, err := ioutil.ReadFile(fmt.Sprintf("%s/%d.txt", dataPath, day))
+	bs, err := ReadAll(day)
 	if err != nil {
 		return nil, fmt.Errorf("reading file: %w", err)
 	}
