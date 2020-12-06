@@ -1,3 +1,16 @@
+/*
+I'd like to point out that solving this puzzle is as simple as converting
+B/R to 1 and F/L to 0 then treating the result as a binary number.
+
+Taking their first example of BFFFBBFRRR equaling seat ID 567:
+	BFFFBBF == 1000110 == 70
+	RRR == 111 == 7
+	Seat ID == 70*8+7 == 567
+
+But I don't often get to write binary searches, so I'm going to implement the
+solution the long way.
+*/
+
 package main
 
 import (
